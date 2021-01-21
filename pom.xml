@@ -12,6 +12,7 @@
         <module>jvm</module>
         <module>thread</module>
         <module>io</module>
+        <module>netty</module>
     </modules>
 
 
