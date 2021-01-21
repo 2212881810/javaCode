@@ -13,6 +13,24 @@ import org.junit.Test;
  */
 public class ByteBufTest {
     @Test
+    public void test2() throws Exception {
+        ByteBuf buffer = ByteBufAllocator.DEFAULT.buffer(20);
+        buffer.writeBytes("123456789".getBytes());
+
+        System.out.println(buffer.readableBytes());
+        byte[] buf = new byte[5];
+        buffer.getBytes(0, buf);
+
+        System.out.println(buffer.readableBytes());
+
+        buffer.readBytes(buf);
+
+        System.out.println(buffer.readableBytes());
+
+    }
+
+
+    @Test
     public void testByteBuf() throws Exception {
         // 创建buf的几种方式
         ByteBuf buffer = null;

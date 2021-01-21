@@ -64,6 +64,10 @@ public class WorkThreadGroup {
     /**
      * 将Channel注册到某个selector上去
      *
+     * 分为ServerSocketChannel和SocketChannel
+     *  其中ServerSocketChannel注册到boss group 线程
+     *  SocketChannel注册到 worker group 线程
+     *
      * @param channel ： ServerSocketChannel或者是SocketChannel
      */
     public void registerSelector(Channel channel) {
