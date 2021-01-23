@@ -1,7 +1,7 @@
 package com.qinfeng.zheng.handler;
 
-import com.google.protobuf.GeneratedMessageV3;
-import com.qinfeng.zheng.msg.GameMsgProtocol;
+import com.google.protobuf.Message;
+import com.qinfeng.zheng.GameMsgRecognizer;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -40,19 +40,37 @@ public class GameMsgDecoder extends ChannelInboundHandlerAdapter {
 
 
 
-            GeneratedMessageV3 cmd = null;
-            switch (msgCode) {
 
+    /*
+    重构
+     GeneratedMessageV3 cmd = null;
+     switch (msgCode) {
                 case GameMsgProtocol.MsgCode.USER_ENTRY_CMD_VALUE:
                     cmd = GameMsgProtocol.UserEntryCmd.parseFrom(msgBody);
                     break;
 
                 case GameMsgProtocol.MsgCode.WHO_ELSE_IS_HERE_CMD_VALUE:
                     cmd = GameMsgProtocol.WhoElseIsHereCmd.parseFrom(msgBody);
+                    break;
+                case GameMsgProtocol.MsgCode.USER_MOVE_TO_CMD_VALUE:
+                    cmd = GameMsgProtocol.UserMoveToCmd.parseFrom(msgBody);
+                    break;
                 default:
                     break;
 
+            }*/
+
+            // 上面代码重构之后的代码
+            // 获取消息构造器
+            Message.Builder builder = GameMsgRecognizer.getBuilderByMsgCode(msgCode);
+            if (builder == null) {
+                return;
             }
+            builder.clear();
+            builder.mergeFrom(msgBody);
+
+            // 构造消息体
+            Message cmd = builder.build();
 
 
             if (cmd != null) {

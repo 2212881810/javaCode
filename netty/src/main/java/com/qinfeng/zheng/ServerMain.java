@@ -1,5 +1,6 @@
 package com.qinfeng.zheng;
 
+import com.qinfeng.zheng.cmd.handler.CmdHandlerFactory;
 import com.qinfeng.zheng.handler.GameMsgDecoder;
 import com.qinfeng.zheng.handler.GameMsgEncoder;
 import com.qinfeng.zheng.handler.GameMsgHandler;
@@ -25,6 +26,13 @@ public class ServerMain {
 
     public static void main(String[] args) {
         PropertyConfigurator.configure(ServerMain.class.getClassLoader().getResourceAsStream("log4j.properties"));
+
+        // 初始化相关的Handler
+        CmdHandlerFactory.init();
+        // 初始化消息识别器
+        GameMsgRecognizer.init();
+
+
 
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();

@@ -1,4 +1,6 @@
-package com.qinfeng.zheng;
+package com.qinfeng.zheng.model;
+
+import java.awt.*;
 
 /**
  * @Author ZhengQinfeng
@@ -9,12 +11,22 @@ public class User {
     /**
      * 英雄id
      */
-    private int userId;
+    public int userId;
     /**
      * 英雄形象
      */
-    private String heroAvatar;
+    public String heroAvatar;
 
+    /**
+     * 用户名
+     */
+    public String userName;
+    /**
+     * 血量
+     */
+    public int curHp = 100;
+
+    public final MoveState moveState = new MoveState();
 
     public int getUserId() {
         return userId;
