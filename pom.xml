@@ -13,6 +13,10 @@
         <module>thread</module>
         <module>io</module>
         <module>netty</module>
+        <module>redis</module>
+        <module>test</module>
+        <module>zk</module>
+        <module>active-mq</module>
     </modules>
 
 
