@@ -17,6 +17,9 @@
         <module>test</module>
         <module>zk</module>
         <module>active-mq</module>
+        <module>jmockit</module>
+        <module>es-test</module>
+        <module>rocketmq</module>
     </modules>
 
 
