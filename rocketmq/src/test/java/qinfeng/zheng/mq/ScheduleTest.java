@@ -62,6 +62,9 @@ public class ScheduleTest {
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             }
         });
+
+
+
         // Launch consumer
         consumer.start();
     }
