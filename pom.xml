@@ -20,6 +20,7 @@
         <module>jmockit</module>
         <module>es-test</module>
         <module>rocketmq</module>
+        <module>kafka</module>
     </modules>
 
 
